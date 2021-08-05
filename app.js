@@ -50,11 +50,11 @@ app.use(passport.initialize());
 //for session
 app.use(passport.session());
 //link
-const Customer = require('./models/customer');
+const User = require('./models/user');
 //to use session
-passport.use(Customer.createStrategy());
-passport.serializeUser(Customer.serializeUser());
-passport.deserializeUser(Customer.deserializeUser());
+passport.use(User.createStrategy());
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 
 //
@@ -66,6 +66,42 @@ app.use('/crud', crudRouter);
 //
 //
 //
+
+
+
+//have to use git ignore
+//for github
+const githubStrategy = require('passport-github2').Strategy;
+// Import globals file
+const config = require('./config/globals');
+passport.use(new githubStrategy({
+  clientID: config.github.clientId,
+  clientSecret: config.github.clientSecret,
+  callbackURL: config.github.callbackUrl
+},
+  // create async callback function
+  async (accessToken, refreshToken, profile, done) => {
+    // search user by ID
+    const user = await User.findOne({ oauthId: profile.id });
+    // user exists (returning user)
+    if (user) {
+      // done
+      return done(null, user);
+    }
+    else {
+      // new user so register them in the db
+      const newUser = new User({
+        username: profile.username,
+        oauthId: profile.id,
+        oauthProvider: 'Github',
+        created: Date.now()
+      });
+      //for DB
+      const savedUser = await newUser.save();
+      return done(null, savedUser);
+    }
+  }
+));
 
 
 // catch 404 and forward to error handler

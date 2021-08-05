@@ -16,10 +16,15 @@
         <a href="/" class="navbar-brand" >Home</a>
         <div class="collapse navbar-collapse justify-content-end">
           <div class="navbar-nav">
-            <a class="nav-item nav-link" href="/crud/onlyReadView">View(Read-Only)</a>
-            <a href="/login"><button type="button" class="btn btn-dark">Login</button></a>
-            <a href="/register"><button type="button" class="btn btn-dark">Register</button></a> 
-            <a class="nav-item nav-link" href="/crud">View</a>
+            {{#if user}}
+              {{!-- <a href="/crud/onlyReadView"><button type="button" class="btn btn-dark">View(Read-Only)</button></a> --}}
+              <a href="#"><button type="button" class="btn btn-dark">{{user.username}}</button></a>
+              <a href="/logout"><button type="button" class="btn btn-dark">Logout</button></a> 
+              {{!-- <a href="/crud"><button type="button" class="btn btn-dark">View</button></a> --}}
+            {{else}}
+              <a href="/register"><button type="button" class="btn btn-dark">Register</button></a>
+              <a href="/login"><button type="button" class="btn btn-dark">Login</button></a> 
+            {{/if}}
           </div>
         </div>
   　  </nav>
