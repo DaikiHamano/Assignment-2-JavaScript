@@ -1,0 +1,24 @@
+
+
+<a href="./crud/add">Add a new project</a>
+
+{{!-- To Show data --}}
+<table class="table table-striped table-hover">
+  <thead>
+    <th>Episode</th>
+    <th>Type</th>
+    <th>Member</th>
+    <th></th>
+  </thead>
+  {{#each dataset}}
+  <tr>
+    <td>{{this.episode}}</Td>
+    <td>{{this.type}}</Td>
+    <td>{{this.member}}</Td>
+    <td>
+      <a href="/crud/edit/{{this._id}}">Edit</a>
+      <a href="/crud/delete/{{this._id}}" onclick="return confirmDeletion();">Delete</a>
+    </td>
+  </tr>
+  {{/each}}
+</table>
