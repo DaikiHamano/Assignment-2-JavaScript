@@ -1,3 +1,5 @@
+
+
 var express = require('express');
 var router = express.Router();
 const User= require('../models/user');
@@ -5,7 +7,7 @@ const passport = require('passport');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express', user: req.user });
+  res.render('index', { title: 'Hancho', user: req.user });
 });
 
 router.get('/login', function(req, res, next) {

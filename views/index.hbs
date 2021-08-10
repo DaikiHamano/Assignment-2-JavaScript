@@ -1,2 +1,37 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+
+<div style="text-align: center;">
+  <h1>{{title}}</h1>
+  <h2>Welcome to <span style="color: red;">地の獄</span></h2>
+  {{!-- to egt the value form the form --}}
+  <form id="target">
+    <div>
+      <p style="font-weight: bold;">Type</p>  
+      {{!-- send the name and normal like type-normal --}}
+      {{!-- nameは一括り and value は each--}}
+      <input type="radio" id="normal" name="type" value="normal" checked="checked">
+      <label for="normal">Normal</label>
+      <input type="radio" id="bad" name="type" value="bad">
+      <label for="bad">Bad</label>
+      <input type="radio" id="emotional" name="type" value="emotional">
+      <label for="emotional">Emotional</label>
+      <input type="radio" id="special" name="type" value="special">
+      <label for="special">Special</label>
+    </div>
+    <div>
+      <p style="font-weight: bold; margin-top: 10px;">Member</p> 
+      <select name="member" style="margin: bottom 10px; ;">   
+          <option value="one">1</option>
+          <option value="two">2</option>
+          <option value="three">3</option>
+          <option value="four">4</option>
+          <option value="question">?</option>
+      </select>
+    </div>
+    <div>
+      <button type="button" class="btn btn-dark" onclick="foo();">Submit</button>
+    </div>
+  </form>
+  {{!-- to show the sentense --}}
+  <h1 id="output"></h1>
+</div>
+

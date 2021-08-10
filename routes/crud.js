@@ -40,7 +40,6 @@ router.get('/onlyReadView', (req, res, next) => {
 });
 
 
-
 router.get('/add',IsLoggedIn,(req, res, next) => {
     res.render('crud/add', { title: 'Add' });
 });

@@ -1,6 +1,6 @@
 
 
-<a href="./crud/add">Add a new project</a>
+<a href="./crud/add" class="btn btn-dark">Add a new project</a>
 
 {{!-- To Show data --}}
 <table class="table table-striped table-hover">
@@ -16,8 +16,8 @@
     <td>{{this.type}}</Td>
     <td>{{this.member}}</Td>
     <td>
-      <a href="/crud/edit/{{this._id}}">Edit</a>
-      <a href="/crud/delete/{{this._id}}" onclick="return confirmDeletion();">Delete</a>
+      <a href="/crud/edit/{{this._id}}" class="btn btn-dark">Edit</a>
+      <a href="/crud/delete/{{this._id}}" onclick="return confirmDeletion();" class="btn btn-dark">Delete</a>
     </td>
   </tr>
   {{/each}}
